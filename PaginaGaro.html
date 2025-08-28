@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POO en Java: Una Guía Completa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-coy.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>Programación Orientada a Objetos en Java</h1>
+        <p>Una guía interactiva para dominar los conceptos clave de la POO y las estructuras de control en Java.</p>
+    </header>
+
+    <nav class="navbar">
+        <a href="#estructuras-control">Estructuras de Control</a>
+        <a href="#clases-objetos-metodos">Clases, Objetos y Métodos</a>
+        <a href="#pilares-conceptos-avanzados">Pilares y Conceptos Avanzados</a>
+    </nav>
+
+    <main class="container">
+        
+        <section id="estructuras-control" class="section">
+            <h2>Estructuras de Control</h2>
+            <p>Las estructuras de control son herramientas esenciales que dirigen el flujo de un programa, permitiendo la toma de decisiones y la repetición de código.</p>
+            
+            <div class="card">
+                <h3>Bucle while</h3>
+                <p>El bucle <code>while</code> repite un bloque de código **mientras una condición sea verdadera**. Es útil cuando no sabes cuántas veces necesitas iterar.</p>
+                
+                <pre><code class="language-java">
+// Ejemplo: Contar del 1 al 10
+int i = 1;
+while (i &lt;= 10) {
+    System.out.println(i);
+    i++;
+}
+                </code></pre>
+            </div>
+
+            <div class="card">
+                <h3>Bucle do-while</h3>
+                <p>A diferencia del <code>while</code>, el bucle <code>do-while</code> garantiza que el código se ejecute **al menos una vez**, ya que la condición se evalúa al final del bucle.</p>
+                <pre><code class="language-java">
+// Ejemplo: Menú simple
+Scanner scanner = new Scanner(System.in);
+String opcion;
+do {
+    System.out.println("1. Opcion A");
+    System.out.println("2. Salir");
+    System.out.print("Seleccione una opcion: ");
+    opcion = scanner.nextLine();
+} while (!opcion.equals("2"));
+scanner.close();
+                </code></pre>
+            </div>
+
+            <div class="card">
+                <h3>Bucle for</h3>
+                <p>El bucle <code>for</code> es ideal para iteraciones con un número conocido de repeticiones. Su sintaxis compacta incluye la inicialización, la condición y el incremento.</p>
+                <pre><code class="language-java">
+// Ejemplo: Recorrer un arreglo
+int[] numeros = {10, 20, 30, 40, 50};
+for (int i = 0; i &lt; numeros.length; i++) {
+    System.out.println("Elemento en el indice " + i + ": " + numeros[i]);
+}
+                </code></pre>
+            </div>
+        </section>
+
+        <section id="clases-objetos-metodos" class="section">
+            <h2>Clases, Objetos y Métodos</h2>
+            <p>La Programación Orientada a Objetos (POO) nos permite modelar el mundo real en código, organizando las funcionalidades en torno a "objetos".</p>
+
+            <div class="card">
+                <h3>Clases y Objetos</h3>
+                <p>Una **clase** es un plano o molde para crear objetos. Un **objeto** es una instancia concreta de una clase.</p>
+                
+                <pre><code class="language-java">
+// Ejemplo: Clase Coche
+class Coche {
+    String color;
+    String marca;
+
+    // Constructor
+    public Coche(String color, String marca) {
+        this.color = color;
+        this.marca = marca;
+    }
+
+    // Metodo
+    public void acelerar() {
+        System.out.println("El coche " + marca + " esta acelerando.");
+    }
+}
+
+// Creacion de objetos
+Coche miCoche = new Coche("Rojo", "Ford");
+Coche tuCoche = new Coche("Azul", "Honda");
+
+miCoche.acelerar();
+tuCoche.acelerar();
+                </code></pre>
+            </div>
+
+            <div class="card">
+                <h3>Sobrecarga de Métodos (Overloading)</h3>
+                <p>Permite tener múltiples métodos con el mismo nombre, pero con diferentes parámetros. Java sabe cuál método usar basándose en la lista de argumentos.</p>
+                <pre><code class="language-java">
+// Ejemplo: Clase Calculadora
+class Calculadora {
+    // Suma de dos enteros
+    public int sumar(int a, int b) {
+        return a + b;
+    }
+
+    // Suma de dos decimales
+    public double sumar(double a, double b) {
+        return a + b;
+    }
+}
+
+// Uso de la sobrecarga
+Calculadora calc = new Calculadora();
+System.out.println("Suma de enteros: " + calc.sumar(5, 10));
+System.out.println("Suma de decimales: " + calc.sumar(5.5, 10.5));
+                </code></pre>
+            </div>
+
+            <div class="card">
+                <h3>Modificador static</h3>
+                <p>Un miembro <code>static</code> pertenece a la clase, no a una instancia específica. Todos los objetos de la clase comparten la misma variable o método estático.</p>
+                <pre><code class="language-java">
+// Ejemplo: Contador de instancias
+class Contador {
+    private static int contadorDeInstancias = 0;
+
+    public Contador() {
+        contadorDeInstancias++;
+    }
+
+    public static int getContador() {
+        return contadorDeInstancias;
+    }
+}
+
+new Contador();
+new Contador();
+System.out.println("Numero de instancias creadas: " + Contador.getContador());
+                </code></pre>
+            </div>
+            
+            <div class="card">
+                <h3>Clases Locales (Local Classes)</h3>
+                <p>Una clase local es una clase definida dentro de un método o un bloque de código. Su ámbito está limitado a ese bloque, lo que la hace útil para tareas muy específicas y aisladas.</p>
+                <pre><code class="language-java">
+// Ejemplo: Clase local
+public void procesarDatos() {
+    class ProcesadorInterno {
+        public void procesar() {
+            System.out.println("Procesando datos...");
+        }
+    }
+    ProcesadorInterno procesador = new ProcesadorInterno();
+    procesador.procesar();
+}
+                </code></pre>
+            </div>
+
+        </section>
+
+        <section id="pilares-conceptos-avanzados" class="section">
+            <h2>Pilares y Conceptos Avanzados</h2>
+            <p>Estos principios son clave para crear software modular, robusto y fácil de mantener.</p>
+
+            <div class="card">
+                <h3>Encapsulamiento</h3>
+                <p>El encapsulamiento oculta el estado interno de un objeto, exponiendo solo una interfaz controlada a través de métodos públicos. Esto protege los datos y facilita la modificación del código sin afectar a otros componentes.</p>
+                <pre><code class="language-java">
+// Ejemplo: Clase CuentaBancaria
+class CuentaBancaria {
+    private double saldo; // Atributo privado
+
+    public CuentaBancaria(double saldoInicial) {
+        this.saldo = saldoInicial;
+    }
+
+    // Metodo publico para acceder al saldo
+    public double getSaldo() {
+        return saldo;
+    }
+
+    // Metodo publico para modificar el saldo
+    public void depositar(double cantidad) {
+        if (cantidad > 0) {
+            this.saldo += cantidad;
+            System.out.println("Deposito exitoso. Saldo actual: " + this.saldo);
+        }
+    }
+}
+                </code></pre>
+            </div>
+
+            <div class="card">
+                <h3>Composición</h3>
+                <p>La composición es una relación de tipo **"tiene un"** (has-a). Un objeto está compuesto por otros objetos. Es una forma de reutilizar código de manera flexible.</p>
+                
+                <pre><code class="language-java">
+// Ejemplo: Composicion
+class Motor {
+    public void encender() {
+        System.out.println("Motor encendido.");
+    }
+}
+
+class CocheCompuesto {
+    // El Coche "tiene un" Motor
+    private Motor motor;
+
+    public CocheCompuesto() {
+        this.motor = new Motor();
+    }
+
+    public void arrancar() {
+        motor.encender();
+        System.out.println("El coche esta en marcha.");
+    }
+}
+
+CocheCompuesto miCoche = new CocheCompuesto();
+miCoche.arrancar();
+                </code></pre>
+            </div>
+
+            <div class="card">
+                <h3>Delegación</h3>
+                <p>La delegación es un patrón de diseño donde un objeto pasa una tarea a otro objeto que es mejor para realizarla. Esto simplifica la lógica de la primera clase y promueve la reutilización.</p>
+                <pre><code class="language-java">
+// Ejemplo: Delegacion
+class Impresora {
+    public void imprimir(String documento) {
+        System.out.println("Imprimiendo: " + documento);
+    }
+}
+
+class Gerente {
+    private Impresora impresora;
+
+    public Gerente() {
+        this.impresora = new Impresora();
+    }
+
+    // El Gerente delega la tarea de imprimir a la Impresora
+    public void imprimirReporte(String reporte) {
+        System.out.println("Gerente preparando el reporte...");
+        impresora.imprimir(reporte);
+    }
+}
+
+Gerente gerente = new Gerente();
+gerente.imprimirReporte("Reporte trimestral");
+                </code></pre>
+            </div>
+
+            <div class="card">
+                <h3>Clases Envoltorio (Wrapper Classes)</h3>
+                <p>Las clases envoltorio (como <code>Integer</code> o <code>Double</code>) permiten tratar los tipos de datos primitivos como objetos. Son esenciales para usarlos en el framework de colecciones de Java, como <code>ArrayList</code>, que solo almacena objetos.</p>
+                <pre><code class="language-java">
+// Ejemplo: Autoboxing y Unboxing
+import java.util.ArrayList;
+
+// Autoboxing: int a Integer
+Integer numeroWrapper = 100;
+
+// Unboxing: Integer a int
+int numeroPrimitivo = numeroWrapper;
+
+// Uso en una coleccion (ArrayList solo admite objetos)
+ArrayList<Integer> numeros = new ArrayList<>();
+numeros.add(5); // Autoboxing
+numeros.add(10);
+System.out.println("Lista de numeros: " + numeros);
+
+int primerElemento = numeros.get(0); // Unboxing
+System.out.println("Primer elemento: " + primerElemento);
+                </code></pre>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Guía de POO en Java. Desarrollado por un Ingeniero de Sistemas.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-java.min.js"></script>
+</body>
+</html>

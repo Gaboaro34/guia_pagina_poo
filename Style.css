@@ -1,0 +1,100 @@
+/* Estilos generales */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f9;
+    color: #333;
+}
+
+.header {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+    background-color: #343a40;
+    padding: 1rem 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.navbar a:hover {
+    background-color: #0056b3;
+}
+
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.section {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.section h2 {
+    color: #007bff;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+}
+
+.card {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.card h3 {
+    color: #495057;
+    margin-top: 0;
+}
+
+/* Estilos para el código */
+pre {
+    background-color: #e9ecef;
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+code {
+    font-family: "Courier New", monospace;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #343a40;
+    color: white;
+    margin-top: 2rem;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .navbar a {
+        display: block;
+        padding: 0.5rem 0;
+    }
+}
